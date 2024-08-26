@@ -1,0 +1,23 @@
+.hero-wrapper{
+  .container-fluid{
+    padding: 0;
+  }
+  .hero-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .desc-para{
+      margin-bottom: 0;
+      font-size: 30px;
+      line-height: 1.2;
+      font-family: "Montserrat", sans-serif;
+    }
+    span{
+      font-size: 25px;
+    }
+  }
+
+  .search {
+    width: 100%;
+  }
+}

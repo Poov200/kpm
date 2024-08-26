@@ -1,0 +1,50 @@
+<div class="container">
+    <h5 class="text-center mt-4">Payment Details</h5>
+
+    <!-- Loop through all products -->
+    <div *ngFor="let product of products" class="card mb-3">
+        <div class="row g-0">
+            <div class="col-12 col-md-4 position-relative">
+                <img src="{{ product.thumbnail}}" class="img-fluid rounded-start w-100" alt="Product Image">
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.size }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">MRP: <del>{{ product.mrp | currency:'INR' }}</del></small>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">Discount: {{ product.discount }}%</small>
+                    </p>
+                    <p class="card-text">
+                        <strong>Quantity:</strong> {{ product.quantity }}
+                    </p>
+                    <h5 class="card-text">Price: {{ product.price | currency:'INR' }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display the selected address -->
+    <div *ngIf="selectedAddress" class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ selectedAddress.name }}
+                <span class="badge badge-secondary">{{ selectedAddress.type }}</span>
+            </h5>
+            <p class="card-text">{{ selectedAddress.phone }}</p>
+            <p class="card-text">{{ selectedAddress.addressLine1 }}, {{ selectedAddress.addressLine2 }}</p>
+            <p class="card-text">{{ selectedAddress.city }}, {{ selectedAddress.state }} - {{ selectedAddress.zip }}</p>
+        </div>
+    </div>
+
+    <!-- Display the total amount to be paid -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Amount to be Paid</h5>
+            <p class="card-text">₹{{ totalAmount | number:'1.2-2' }}</p>
+        </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" (click)="onProceedToPay()">Proceed to Pay</button>
+</div>
